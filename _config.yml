@@ -43,6 +43,10 @@ highlighter: rouge
 # 2016.02월 이후로 syntax highlighter는 rouge만 지원.
 # Pygments 사용불가.
 
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
 paginate: 20
 # 작성한 모든 post를 하나의 페이지에 열거할 수 없으니
 # pagination이 필요하고 몇개의 post를 하나의 page에서
@@ -105,12 +109,6 @@ disqus_shortname: xxxxxxxx
 # disqus를 이용할 것인지 여부와 만약 사용하면
 # disqus shortname을 입력 ( disqus username이 아님 )
 
-# Conversion
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
 
 # Google Analytics
 google_analytics: UA-xxxxxxxx-x # replace with your GA tracking identifier
