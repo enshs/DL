@@ -656,3 +656,77 @@ sam["Close"][-1]+preInterval1*sam["Close"][-1]
     array([70188.54579832, 70621.59327731])
 
 
+여러층의 모형을 생성할 수 있는 `nn.sequential()`과 비선형함수인 `nn.ReLU()`를 사용하여 다층모형을 구현해 봅니다. 
+
+```(python)
+class stockLogistic3(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layer=nn.Sequential(nn.Linear(6, 64), nn.ReLU(), nn.Linear(64, binsize), nn.ReLU())
+    def forward(self, x):
+        return self.layer(x)
+    
+model3=stockLogistic3()
+
+lr=1e-3
+opt=optim.Adam(model3.parameters(), lr=lr)
+
+loopN=10000
+for epoch in range(loopN+1):
+    pre=model3(xtr1)
+    loss=F.cross_entropy(pre, ytr1)    
+    opt.zero_grad()
+    loss.backward()
+    opt.step() 
+    
+    model.eval()
+    with torch.no_grad():
+        valid_loss=F.cross_entropy(model3(xte1), yte1)
+     
+    if epoch%1000==0:
+            print(f'Epoch:{epoch}, loss:{np.round(loss.item(),4)}, val_loss:{np.round(valid_loss.item(), 4)}')
+```
+
+```
+Epoch:0, loss:2.7353, val_loss:2.8229
+Epoch:1000, loss:2.7309, val_loss:2.8284
+Epoch:2000, loss:2.728, val_loss:2.8323
+Epoch:3000, loss:2.7253, val_loss:2.8373
+Epoch:4000, loss:2.7234, val_loss:2.8414
+Epoch:5000, loss:2.7218, val_loss:2.844
+Epoch:6000, loss:2.7204, val_loss:2.8451
+Epoch:7000, loss:2.7191, val_loss:2.8464
+Epoch:8000, loss:2.7181, val_loss:2.8482
+Epoch:9000, loss:2.7171, val_loss:2.8481
+Epoch:10000, loss:2.7163, val_loss:2.849
+```
+
+
+학습 데이터에 대한 정확도
+
+```(python)
+torch.mean((torch.argmax(model3(xtr1),dim=1)==ytr1).float())
+```
+```
+tensor(0.2294)
+```
+
+검증데이터에 대한 정확도 
+
+```(python)
+torch.mean((torch.argmax(model3(xte1),dim=1)==yte1).float())
+```
+```
+tensor(0.1684)
+```
+
+최종 변수(newT)에 대한 예측
+
+```(python)
+preIndex3=torch.argmax(model3(newT1))
+preInterval3=group[preIndex3.item():(preIndex3.item()+2)]
+sam["Close"][-1]+preInterval3*sam["Close"][-1]
+```
+```
+array([70188.54579832, 70621.59327731])
+```
