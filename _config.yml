@@ -21,6 +21,23 @@ owner:
   # google plus id, include the '+', eg +mmistakes
   google_plus:
 
+defaults:
+---
+scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+      
+title: "DL"
+tags:
+  - Blog
+  - MathJax
+  - Jekyll
+  - LaTeX
+use_math: true  
+--- 
+      
+      
 highlighter: rouge
 # text highlighter로 rouge이용
 # 2016.02월 이후로 syntax highlighter는 rouge만 지원.
@@ -45,7 +62,7 @@ url: https://enshs.github.io
 baseurl: /
 
 # Website info
-title: Data Analysis
+title: DL
 # 자신의 blog title.
 
 description: DeepLearning 공부 
