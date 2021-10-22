@@ -1,3 +1,14 @@
+      
+---
+title: "softmax"
+tags:
+  - Blog
+  - MathJax
+  - Jekyll
+  - LaTeX
+use_math: true  
+---
+
 # softmax
 _______________________
 
