@@ -94,9 +94,9 @@ NLP는 기업이 제품에 대한 수많은 리뷰를 분석하는 데 도움이
 ### Natural Language vs. Computer Language
 자연어와 콤퓨터 언어의 주요한 차이는 다음과 같습니다. 
 
-|Parameter|	Natural Language|	Computer Language|
+|Parameter|	Natural Language|Computer Language|
 |:---:|	:---:|	:---:|
-|Ambiguous|	They are ambiguous in nature.|	They are designed to unambiguous.|
+|Ambiguous|	They are ambiguous in nature.|They are designed to unambiguous.|
 |Redundancy	|Natural languages employ lots of redundancy.|	Formal languages are less redundant.|
 |Literalness|	Natural languages are made of idiom & metaphor|	Formal languages mean exactly what they want to say|
 
@@ -235,11 +235,11 @@ chunk:{<NN.?>*<VBD.?>*<JJ.?>*<CC>?}
 다음 표는 다양한 기호의 의미를 보여줍니다.
 
     
-|Name of symbol|	Description|
-    |:---:|:---:|
-|.	|Any character except new line|
-|*	|Match 0 or more repetitions|
-|?	|Match 0 or 1 repetitions|
+|Name of symbol|Description|
+|:---:|:---:|
+|.|Any character except new line|
+|*|Match 0 or more repetitions|
+|?|Match 0 or 1 repetitions|
 
 
 ```python
@@ -329,7 +329,7 @@ print(result)
 result.draw()  #명사구 chunking에서 볼 수 있는 패턴을 그래픽으로 그립니다.
 ```
 
-![result.draw](./image/chunking1.png)
+![result.draw](./chunking1.png)
 
 그래프에서 "learn"과 "guru99"는 두 개의 다른 토큰이지만 명사구로 분류되는 반면 토큰 "from"은 명사구에 속하지 않는다는 결론을 내릴 수 있습니다. chunk는 다른 토큰을 동일한 chunk로 분류하는 데 사용됩니다. 결과는 선택한 문법에 따라 달라집니다. 추가 chunk NLTK는 패턴에 태그를 지정하고 텍스트 말뭉치를 탐색하는 데 사용됩니다.
 
